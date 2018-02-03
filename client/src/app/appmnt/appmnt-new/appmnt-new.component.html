@@ -1,0 +1,35 @@
+<h1>New Appointment</h1>
+
+<div
+    class="appmnt-new-div"
+>
+    <form
+      (submit)="onSubmit(); createForm.resetForm()"
+      #createForm="ngForm"
+    >
+    <label>Content:</label>
+    <textarea
+      rows="3"
+      cols="15"
+      name="appmnt"
+      required
+      minlength="10"
+      [(ngModel)]="appmnt.content"
+      #content="ngModel"
+      ></textarea>
+    <small
+      class="errors"
+      [hidden]="content.valid || (content.untouched && !createForm.submitted)"
+    >Content is required (minny length 10).
+    </small>
+    <button
+      class="appmnt-new-submit"
+      [disabled]="!createForm.valid"
+      type="submit">Submit
+    </button>
+    </form>
+    <button
+    (click)="home()"
+    >Cancel    
+    </button>
+</div>
